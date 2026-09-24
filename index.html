@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,261 +9,1314 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f7f5f0;
+      color: #171717;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font-family: inherit;
+    }
+
+    /* =========================
+       TOP BAR
+    ========================= */
+
+    .topbar {
+      background: #171717;
+      color: #fff;
+      text-align: center;
+      padding: 11px 20px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247,245,240,.96);
+      border-bottom: 1px solid #ddd9d0;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      max-width: 1380px;
+      margin: auto;
+      min-height: 88px;
+      padding: 0 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 35px;
+      font-weight: 600;
+      letter-spacing: 6px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    nav a {
+      position: relative;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      transition: .3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: #171717;
+      transition: .3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .action-btn {
+      border: 1px solid #d8d3ca;
+      background: transparent;
+      width: 43px;
+      height: 43px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+      transition: .3s ease;
+    }
+
+    .action-btn:hover {
+      background: #171717;
+      color: #fff;
+    }
+
+    .bag-btn {
+      border-radius: 30px;
+      width: auto;
+      padding: 0 18px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: calc(100vh - 130px);
+      max-width: 1380px;
+      margin: auto;
+      padding: 38px 42px 70px;
+      display: grid;
+      grid-template-columns: 42% 58%;
+      gap: 0;
+    }
+
+    .hero-copy {
+      background: #e9e4da;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 70px;
+      min-height: 680px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 25px;
+    }
+
+    .hero-copy h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(65px, 7vw, 105px);
+      line-height: .84;
+      font-weight: 500;
+      letter-spacing: -3px;
+      margin-bottom: 35px;
+    }
+
+    .hero-copy h1 span {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .hero-description {
+      max-width: 420px;
+      color: #5e5a54;
+      font-size: 13px;
+      line-height: 2;
+      margin-bottom: 38px;
+    }
+
+    .hero-btn {
+      display: inline-flex;
+      width: fit-content;
+      padding: 16px 28px;
+      background: #171717;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: .3s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      background: #34312d;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 680px;
+      overflow: hidden;
+      background: #dedbd4;
+    }
+
+    .hero-visual img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1s ease;
+    }
+
+    .hero:hover .hero-visual img {
+      transform: scale(1.025);
+    }
+
+    .new-label {
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      z-index: 2;
+      background: #fff;
+      padding: 12px 17px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    .hero-product {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2;
+      background: rgba(255,255,255,.94);
+      padding: 22px 25px;
+      min-width: 205px;
+    }
+
+    .hero-product small {
+      display: block;
+      font-size: 8px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .hero-product strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 29px;
+      font-weight: 500;
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      padding: 115px 30px;
+    }
+
+    .intro h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(42px, 5vw, 68px);
+      line-height: 1;
+      font-weight: 500;
+      margin-bottom: 25px;
+    }
+
+    .intro h2 em {
+      font-weight: 400;
+    }
+
+    .intro p:last-child {
+      max-width: 570px;
+      margin: auto;
+      color: #77716a;
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    /* =========================
+       COLLECTION
+    ========================= */
+
+    .collection {
+      max-width: 1380px;
+      margin: auto;
+      padding: 70px 42px 120px;
+    }
+
+    .collection-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 45px;
+      border-bottom: 1px solid #d8d3ca;
+      padding-bottom: 25px;
+    }
+
+    .collection-heading h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 55px;
+      line-height: .9;
+      font-weight: 500;
+    }
+
+    .collection-heading a {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #171717;
+      padding-bottom: 5px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .product-card {
+      background: #ebe7df;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 470px;
+      position: relative;
+      overflow: hidden;
+      background: #dedbd4;
+    }
+
+    .product-image img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform .7s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.045);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      background: #fff;
+      padding: 9px 12px;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+    }
+
+    .heart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 2;
+      width: 39px;
+      height: 39px;
+      border: 0;
+      background: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .product-info {
+      padding: 25px 24px 27px;
+    }
+
+    .product-type {
+      font-size: 8px;
+      letter-spacing: 2px;
+      color: #807b73;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .product-info h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .product-description {
+      color: #77716a;
+      font-size: 11px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .product-link {
+      display: inline-block;
+      border-bottom: 1px solid #171717;
+      padding-bottom: 4px;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       BRAND STATEMENT
+    ========================= */
+
+    .statement {
+      background: #171717;
+      color: #fff;
+      padding: 130px 30px;
+      text-align: center;
+    }
+
+    .statement .eyebrow {
+      color: #aaa69f;
+    }
+
+    .statement h2 {
+      max-width: 950px;
+      margin: auto;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 82px);
+      line-height: .95;
+      font-weight: 400;
+    }
+
+    .statement h2 em {
+      font-style: italic;
+    }
+
+    /* =========================
+       STORY
+    ========================= */
+
+    .story {
+      max-width: 1380px;
+      margin: auto;
+      padding: 120px 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 90px;
+    }
+
+    .story-image {
+      height: 600px;
+      overflow: hidden;
+      background: #ddd9d1;
+    }
+
+    .story-image img {
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .story-copy h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 500;
+      line-height: .92;
+      margin-bottom: 30px;
+    }
+
+    .story-copy h2 em {
+      font-style: italic;
+    }
+
+    .story-copy p:not(.eyebrow) {
+      color: #716c64;
+      max-width: 470px;
+      font-size: 13px;
+      line-height: 2;
+      margin-bottom: 30px;
+    }
+
+    .story-link {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border-bottom: 1px solid #171717;
+      padding-bottom: 7px;
+    }
+
+    /* =========================
+       NEWSLETTER
+    ========================= */
+
+    .newsletter {
+      background: #e9e4da;
+      padding: 100px 30px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 58px;
+      font-weight: 500;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p:not(.eyebrow) {
+      color: #716c64;
+      font-size: 12px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      max-width: 480px;
+      margin: auto;
+      display: flex;
+      border-bottom: 1px solid #171717;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      background: transparent;
+      border: 0;
+      outline: none;
+      padding: 15px 0;
+      font-size: 11px;
+    }
+
+    .newsletter-form button {
+      background: transparent;
+      border: 0;
+      cursor: pointer;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #171717;
+      color: #fff;
+      padding: 70px 42px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1380px;
+      margin: auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 50px;
+      padding-bottom: 70px;
+    }
+
+    .footer-brand h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 45px;
+      font-weight: 500;
+      letter-spacing: 5px;
+      margin-bottom: 10px;
+    }
+
+    .footer-brand p {
+      color: #99958e;
+      font-size: 11px;
+      line-height: 1.8;
+      max-width: 260px;
+    }
+
+    .footer-column h4 {
+      font-size: 9px;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #99958e;
+      font-size: 10px;
+      margin-bottom: 12px;
+      transition: .2s ease;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #343434;
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      color: #77736d;
+      font-size: 9px;
+      letter-spacing: .5px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 1000px) {
+
+      .header-inner {
+        padding: 0 22px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 20px;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-visual {
+        min-height: auto;
+      }
+
+      .hero-copy {
+        padding: 60px 35px;
+      }
+
+      .hero-copy h1 {
+        font-size: 75px;
+      }
+
+      .hero-visual {
+        height: 600px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .story {
+        gap: 40px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .topbar {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+      }
+
+      .logo {
+        font-size: 29px;
+      }
+
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .action-btn {
+        width: 37px;
+        height: 37px;
+      }
+
+      .bag-btn {
+        padding: 0 12px;
+      }
+
+      .hero {
+        padding: 12px;
+      }
+
+      .hero-copy {
+        padding: 55px 25px;
+      }
+
+      .hero-copy h1 {
+        font-size: 61px;
+        letter-spacing: -2px;
+      }
+
+      .hero-visual {
+        height: 470px;
+      }
+
+      .hero-product {
+        bottom: 18px;
+        right: 18px;
+      }
+
+      .intro {
+        padding: 85px 22px;
+      }
+
+      .intro h2 {
+        font-size: 45px;
+      }
+
+      .collection {
+        padding: 50px 18px 80px;
+      }
+
+      .collection-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .collection-heading h2 {
+        font-size: 47px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 490px;
+      }
+
+      .statement {
+        padding: 90px 22px;
+      }
+
+      .story {
+        padding: 80px 20px;
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .story-image {
+        height: 470px;
+      }
+
+      .newsletter {
+        padding: 80px 20px;
+      }
+
+      .newsletter h2 {
+        font-size: 46px;
+      }
+
+      footer {
+        padding: 60px 25px 25px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 25px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Announcement -->
-  <div class="announcement">
-    <span>Complimentary delivery on orders above PKR 5,000</span>
+  <!-- TOP BAR -->
+  <div class="topbar">
+    Complimentary delivery on orders above PKR 5,000
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <a href="#" class="logo">ÉLANE</a>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
 
-    <nav class="nav">
-      <a href="#home">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#about">Our Story</a>
-      <a href="#contact">Contact</a>
-    </nav>
+      <a href="#home" class="logo">ÉLANE</a>
 
-    <div class="header-actions">
-      <button class="icon-btn" aria-label="Search">⌕</button>
-      <button class="icon-btn" aria-label="Wishlist">♡</button>
-      <button class="icon-btn cart-btn" aria-label="Cart">
-        Bag <span id="cartCount">0</span>
-      </button>
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#collection">Collection</a>
+        <a href="#about">Our Story</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn" aria-label="Search">⌕</button>
+        <button class="action-btn" aria-label="Wishlist">♡</button>
+        <button class="action-btn bag-btn">
+          Bag <span id="cartCount">0</span>
+        </button>
+      </div>
+
     </div>
   </header>
 
-  <!-- Hero -->
   <main>
 
+    <!-- HERO / NEW ARRIVAL -->
     <section class="hero" id="home">
-      <div class="hero-content">
-        <p class="eyebrow">THE ART OF FRAGRANCE</p>
+
+      <div class="hero-copy">
+
+        <p class="eyebrow">NEW ARRIVAL · ÉLANE</p>
 
         <h1>
-          A Signature<br>
-          <em>Worth Remembering.</em>
+          Meet
+          <span>ISHQ.</span>
         </h1>
 
-        <p class="hero-text">
-          Discover refined fragrances crafted for those who
-          leave an impression without saying a word.
+        <p class="hero-description">
+          A fragrance made to be remembered.
+          Discover ISHQ — the newest addition to the ÉLANE collection,
+          presented with a character all its own.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#collection" class="btn btn-dark">Explore Collection</a>
-          <a href="#about" class="btn btn-outline">Discover Our Story</a>
-        </div>
+        <a href="#collection" class="hero-btn">
+          Discover ISHQ
+        </a>
+
       </div>
 
-      <div class="hero-image">
-        <div class="hero-image-overlay"></div>
+      <div class="hero-visual">
+
+        <span class="new-label">NEW ADDITION</span>
+
         <img
-          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=90"
-          alt="Luxury perfume bottle">
+          src="images/ishq.webp"
+          alt="ISHQ perfume">
+
+        <div class="hero-product">
+          <small>Featured fragrance</small>
+          <strong>ISHQ</strong>
+        </div>
+
       </div>
+
     </section>
 
-    <!-- Intro -->
+
+    <!-- INTRO -->
     <section class="intro">
-      <p class="eyebrow">CRAFTED WITH INTENTION</p>
-      <h2>Fragrance is not simply worn.<br><em>It becomes part of you.</em></h2>
+
+      <p class="eyebrow">THE ÉLANE COLLECTION</p>
+
+      <h2>
+        Fragrance that speaks
+        <br>
+        <em>before you do.</em>
+      </h2>
+
       <p>
-        Every ÉLANE fragrance is created to tell a story —
-        sophisticated, memorable and distinctly yours.
+        Explore a carefully selected collection of fragrances,
+        each with its own personality, presence and story.
       </p>
+
     </section>
 
-    <!-- Collection -->
+
+    <!-- COLLECTION -->
     <section class="collection" id="collection">
 
-      <div class="section-heading">
+      <div class="collection-heading">
+
         <div>
-          <p class="eyebrow">THE COLLECTION</p>
-          <h2>Signature Fragrances</h2>
+          <p class="eyebrow">SHOP THE COLLECTION</p>
+          <h2>Six Distinct Fragrances</h2>
         </div>
 
-        <a href="#" class="view-all">View All →</a>
+        <a href="#collection">Explore Collection →</a>
+
       </div>
+
 
       <div class="products">
 
-        <!-- Product 1 -->
+        <!-- ISHQ -->
         <article class="product-card">
-          <div class="product-image">
-            <span class="badge">BESTSELLER</span>
 
-            <button class="wishlist">♡</button>
+          <div class="product-image">
+
+            <span class="product-tag">NEW ADDITION</span>
+
+            <button class="heart" aria-label="Add ISHQ to wishlist">
+              ♡
+            </button>
 
             <img
-              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=90"
-              alt="Luxury perfume">
+              src="images/ishq.webp"
+              alt="ISHQ perfume">
+
           </div>
 
           <div class="product-info">
-            <p class="product-type">EAU DE PARFUM</p>
-            <h3>Noir Élan</h3>
-            <p class="notes">Oud · Amber · Vanilla</p>
 
-            <div class="product-bottom">
-              <strong>PKR 5,490</strong>
-              <button class="add-btn" data-product="Noir Élan">Add to Bag</button>
-            </div>
+            <p class="product-type">FRAGRANCE</p>
+
+            <h3>ISHQ</h3>
+
+            <p class="product-description">
+              The newest addition to the ÉLANE collection.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
           </div>
+
         </article>
 
-        <!-- Product 2 -->
-        <article class="product-card">
-          <div class="product-image">
-            <span class="badge">NEW</span>
 
-            <button class="wishlist">♡</button>
+        <!-- WANTED + FLORA -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="product-tag">COLLECTION</span>
+
+            <button class="heart" aria-label="Add Wanted + Flora to wishlist">
+              ♡
+            </button>
 
             <img
-              src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=900&q=90"
-              alt="Luxury fragrance bottle">
+              src="images/wanted-flora.webp"
+              alt="Wanted + Flora">
+
           </div>
 
           <div class="product-info">
-            <p class="product-type">EAU DE PARFUM</p>
-            <h3>Velour</h3>
-            <p class="notes">Rose · Musk · Sandalwood</p>
 
-            <div class="product-bottom">
-              <strong>PKR 5,990</strong>
-              <button class="add-btn" data-product="Velour">Add to Bag</button>
-            </div>
+            <p class="product-type">FRAGRANCE</p>
+
+            <h3>Wanted + Flora</h3>
+
+            <p class="product-description">
+              A distinctive fragrance from the ÉLANE collection.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
           </div>
+
         </article>
 
-        <!-- Product 3 -->
-        <article class="product-card">
-          <div class="product-image">
-            <span class="badge">SIGNATURE</span>
 
-            <button class="wishlist">♡</button>
+        <!-- AYAT -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="product-tag">COLLECTION</span>
+
+            <button class="heart" aria-label="Add Ayat Kids Cologne to wishlist">
+              ♡
+            </button>
 
             <img
-              src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=900&q=90"
-              alt="Premium perfume">
+              src="images/ayat.webp"
+              alt="Ayat Kids Cologne">
+
           </div>
 
           <div class="product-info">
-            <p class="product-type">EAU DE PARFUM</p>
-            <h3>Maison Noir</h3>
-            <p class="notes">Leather · Cedar · Spice</p>
 
-            <div class="product-bottom">
-              <strong>PKR 6,490</strong>
-              <button class="add-btn" data-product="Maison Noir">Add to Bag</button>
-            </div>
+            <p class="product-type">COLOGNE</p>
+
+            <h3>Ayat Kids Cologne</h3>
+
+            <p class="product-description">
+              A carefully presented fragrance from the collection.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
           </div>
+
+        </article>
+
+
+        <!-- AURA -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="product-tag">COLLECTION</span>
+
+            <button class="heart" aria-label="Add Aura to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="images/aura.webp"
+              alt="Aura">
+
+          </div>
+
+          <div class="product-info">
+
+            <p class="product-type">FRAGRANCE</p>
+
+            <h3>Aura</h3>
+
+            <p class="product-description">
+              Designed to become part of your everyday presence.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- 295 MEN -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="product-tag">FOR HIM</span>
+
+            <button class="heart" aria-label="Add 295 Men to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="images/295-men.webp"
+              alt="295 Men">
+
+          </div>
+
+          <div class="product-info">
+
+            <p class="product-type">MEN'S FRAGRANCE</p>
+
+            <h3>295 Men</h3>
+
+            <p class="product-description">
+              A refined fragrance created for a confident presence.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- CRAZE -->
+        <article class="product-card">
+
+          <div class="product-image">
+
+            <span class="product-tag">COLLECTION</span>
+
+            <button class="heart" aria-label="Add Craze to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="images/craze.webp"
+              alt="Craze">
+
+          </div>
+
+          <div class="product-info">
+
+            <p class="product-type">FRAGRANCE</p>
+
+            <h3>Craze</h3>
+
+            <p class="product-description">
+              A bold addition to the ÉLANE fragrance collection.
+            </p>
+
+            <a href="#" class="product-link">
+              Discover Fragrance →
+            </a>
+
+          </div>
+
         </article>
 
       </div>
+
     </section>
 
-    <!-- Story -->
+
+    <!-- BRAND STATEMENT -->
+    <section class="statement">
+
+      <p class="eyebrow">THE ÉLANE PHILOSOPHY</p>
+
+      <h2>
+        Not just a fragrance.
+        <br>
+        <em>A lasting impression.</em>
+      </h2>
+
+    </section>
+
+
+    <!-- OUR STORY -->
     <section class="story" id="about">
 
       <div class="story-image">
+
         <img
-          src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=90"
-          alt="Perfume collection">
+          src="images/wanted-flora.webp"
+          alt="ÉLANE fragrance">
+
       </div>
 
-      <div class="story-content">
-        <p class="eyebrow">OUR PHILOSOPHY</p>
 
-        <h2>Created for<br><em>lasting impressions.</em></h2>
+      <div class="story-copy">
+
+        <p class="eyebrow">OUR STORY</p>
+
+        <h2>
+          Made to leave
+          <br>
+          <em>something behind.</em>
+        </h2>
 
         <p>
-          We believe true luxury lies in the details.
-          From the first note to the final trace, every
-          ÉLANE fragrance is designed with elegance,
-          character and individuality in mind.
+          ÉLANE is built around a simple idea:
+          fragrance should feel personal. Every bottle,
+          every scent and every detail is part of an
+          experience designed to stay with you.
         </p>
 
-        <a href="#" class="text-link">Discover ÉLANE →</a>
+        <a href="#contact" class="story-link">
+          Discover Our Story →
+        </a>
+
       </div>
 
     </section>
 
-    <!-- Quote -->
-    <section class="quote">
-      <p class="eyebrow">THE ÉLANE EXPERIENCE</p>
-      <h2>
-        “Luxury is the memory<br>
-        <em>you leave behind.</em>”
-      </h2>
-    </section>
 
-    <!-- Newsletter -->
+    <!-- NEWSLETTER -->
     <section class="newsletter" id="contact">
-      <div>
-        <p class="eyebrow">STAY IN THE KNOW</p>
-        <h2>Enter the world of ÉLANE.</h2>
-        <p>
-          Be the first to discover new fragrances,
-          exclusive launches and private offers.
-        </p>
-      </div>
+
+      <p class="eyebrow">JOIN ÉLANE</p>
+
+      <h2>Enter the world of fragrance.</h2>
+
+      <p>
+        Discover new arrivals, collection updates
+        and exclusive ÉLANE releases.
+      </p>
 
       <form class="newsletter-form">
-        <input type="email" placeholder="Your email address" required>
-        <button type="submit">Subscribe</button>
+
+        <input
+          type="email"
+          placeholder="Your email address"
+          required>
+
+        <button type="submit">
+          Subscribe →
+        </button>
+
       </form>
+
     </section>
 
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
 
-    <div class="footer-brand">
-      <h2>ÉLANE</h2>
-      <p>Modern fragrances. Timeless impressions.</p>
-    </div>
+  <!-- FOOTER -->
+  <footer>
 
-    <div class="footer-links">
-      <div>
-        <h4>SHOP</h4>
-        <a href="#collection">All Fragrances</a>
-        <a href="#collection">Bestsellers</a>
-        <a href="#collection">New Arrivals</a>
+    <div class="footer-inner">
+
+      <div class="footer-top">
+
+        <div class="footer-brand">
+
+          <h2>ÉLANE</h2>
+
+          <p>
+            Modern fragrances.
+            Distinctive impressions.
+          </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>SHOP</h4>
+
+          <a href="#collection">Collection</a>
+          <a href="#collection">New Arrival</a>
+          <a href="#collection">Fragrances</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>EXPLORE</h4>
+
+          <a href="#about">Our Story</a>
+          <a href="#contact">Contact</a>
+          <a href="#home">Home</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+          <h4>FOLLOW</h4>
+
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">TikTok</a>
+
+        </div>
+
       </div>
 
-      <div>
-        <h4>HELP</h4>
-        <a href="#">Shipping</a>
-        <a href="#">Returns</a>
-        <a href="#">Contact</a>
+
+      <div class="footer-bottom">
+
+        <span>© 2026 ÉLANE. All rights reserved.</span>
+
+        <span>Luxury, beautifully bottled.</span>
+
       </div>
 
-      <div>
-        <h4>FOLLOW</h4>
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">TikTok</a>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© 2026 ÉLANE. All rights reserved.</span>
-      <span>Luxury, beautifully bottled.</span>
     </div>
 
   </footer>
 
-  <script src="script.js"></script>
+
+  <script>
+    /* Simple bag counter */
+
+    let cartCount = 0;
+
+    const cart = document.getElementById("cartCount");
+
+    document.querySelectorAll(".product-link").forEach(link => {
+
+      link.addEventListener("click", function(e) {
+
+        e.preventDefault();
+
+        cartCount++;
+
+        cart.textContent = cartCount;
+
+        this.textContent = "Added to Bag ✓";
+
+        setTimeout(() => {
+          this.textContent = "Discover Fragrance →";
+        }, 1500);
+
+      });
+
+    });
+
+
+    /* Newsletter */
+
+    document.querySelector(".newsletter-form").addEventListener("submit", function(e) {
+
+      e.preventDefault();
+
+      const button = this.querySelector("button");
+
+      button.textContent = "Subscribed ✓";
+
+      this.querySelector("input").value = "";
+
+    });
+  </script>
 
 </body>
 </html>
+```
