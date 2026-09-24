@@ -1,1375 +1,2434 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ÉLANE — Luxury Fragrances</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #f6f3ed;
-      color: #161616;
-      font-family: "Montserrat", sans-serif;
-    }
-
-    img {
-      width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font-family: inherit;
-    }
-
-    .topbar {
-      background: #161616;
-      color: #fff;
-      text-align: center;
-      padding: 11px 15px;
-      font-size: 9px;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(246,243,237,.97);
-      border-bottom: 1px solid #ddd8cf;
-      backdrop-filter: blur(12px);
-    }
-
-    .header-inner {
-      max-width: 1400px;
-      margin: auto;
-      min-height: 88px;
-      padding: 0 42px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 36px;
-      font-weight: 600;
-      letter-spacing: 6px;
-    }
-
-    nav {
-      display: flex;
-      gap: 38px;
-    }
-
-    nav a {
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      position: relative;
-    }
-
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -8px;
-      width: 0;
-      height: 1px;
-      background: #161616;
-      transition: .3s;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .action {
-      width: 42px;
-      height: 42px;
-      border: 1px solid #d5d0c7;
-      background: transparent;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: .3s;
-    }
-
-    .action:hover {
-      background: #161616;
-      color: #fff;
-    }
-
-    .bag {
-      width: auto;
-      padding: 0 17px;
-      border-radius: 30px;
-      font-size: 9px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-    }
-
-    /* HERO */
-
-    .hero {
-      max-width: 1400px;
-      min-height: calc(100vh - 130px);
-      margin: auto;
-      padding: 35px 42px 70px;
-      display: grid;
-      grid-template-columns: 43% 57%;
-    }
-
-    .hero-content {
-      background: #e7e1d7;
-      padding: 75px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .eyebrow {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 25px;
-    }
-
-    .hero-content h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(70px, 8vw, 115px);
-      line-height: .78;
-      font-weight: 500;
-      letter-spacing: -4px;
-      margin-bottom: 38px;
-    }
-
-    .hero-content h1 span {
-      display: block;
-      font-style: italic;
-      font-weight: 400;
-    }
-
-    .hero-text {
-      max-width: 420px;
-      color: #666159;
-      font-size: 12px;
-      line-height: 2;
-      margin-bottom: 38px;
-    }
-
-    .hero-btn {
-      width: fit-content;
-      padding: 17px 28px;
-      background: #161616;
-      color: #fff;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: .3s;
-    }
-
-    .hero-btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .hero-image {
-      position: relative;
-      min-height: 700px;
-      overflow: hidden;
-      background: #ddd8cf;
-    }
-
-    .hero-image img {
-      height: 100%;
-      object-fit: cover;
-      transition: transform 1s ease;
-    }
-
-    .hero-image:hover img {
-      transform: scale(1.03);
-    }
-
-    .new-label {
-      position: absolute;
-      z-index: 2;
-      top: 25px;
-      left: 25px;
-      background: #fff;
-      padding: 12px 16px;
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
-
-    .hero-card {
-      position: absolute;
-      z-index: 2;
-      right: 25px;
-      bottom: 25px;
-      background: rgba(255,255,255,.95);
-      padding: 22px 25px;
-      min-width: 200px;
-    }
-
-    .hero-card small {
-      display: block;
-      font-size: 8px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 7px;
-    }
-
-    .hero-card strong {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 30px;
-      font-weight: 500;
-    }
-
-    /* INTRO */
-
-    .intro {
-      max-width: 900px;
-      margin: auto;
-      padding: 120px 25px;
-      text-align: center;
-    }
-
-    .intro h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(45px, 5vw, 70px);
-      line-height: .95;
-      font-weight: 500;
-      margin-bottom: 25px;
-    }
-
-    .intro h2 em {
-      font-style: italic;
-    }
-
-    .intro p:last-child {
-      max-width: 550px;
-      margin: auto;
-      color: #716c64;
-      font-size: 12px;
-      line-height: 2;
-    }
-
-    /* COLLECTION */
-
-    .collection {
-      max-width: 1400px;
-      margin: auto;
-      padding: 60px 42px 120px;
-    }
-
-    .collection-head {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      border-bottom: 1px solid #d6d1c8;
-      padding-bottom: 25px;
-      margin-bottom: 45px;
-    }
-
-    .collection-head h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 56px;
-      line-height: .9;
-      font-weight: 500;
-    }
-
-    .view-all {
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-bottom: 1px solid #161616;
-      padding-bottom: 6px;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .product {
-      background: #ebe7df;
-      overflow: hidden;
-    }
-
-    .product-image {
-      height: 500px;
-      position: relative;
-      overflow: hidden;
-      background: #dedad2;
-    }
-
-    .product-image img {
-      height: 100%;
-      object-fit: cover;
-      transition: transform .7s ease;
-    }
-
-    .product:hover .product-image img {
-      transform: scale(1.045);
-    }
-
-    .tag {
-      position: absolute;
-      z-index: 2;
-      top: 17px;
-      left: 17px;
-      background: #fff;
-      padding: 9px 12px;
-      font-size: 7px;
-      font-weight: 600;
-      letter-spacing: 1.7px;
-    }
-
-    .heart {
-      position: absolute;
-      z-index: 2;
-      top: 14px;
-      right: 14px;
-      width: 40px;
-      height: 40px;
-      border: 0;
-      border-radius: 50%;
-      background: #fff;
-      cursor: pointer;
-      font-size: 17px;
-    }
-
-    .product-info {
-      padding: 25px;
-    }
-
-    .product-type {
-      color: #817c74;
-      font-size: 8px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .product-info h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 33px;
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
-    .product-info p:last-of-type {
-      color: #77716a;
-      font-size: 10px;
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
-
-    .discover {
-      display: inline-block;
-      border-bottom: 1px solid #161616;
-      padding-bottom: 5px;
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 1.8px;
-      text-transform: uppercase;
-    }
-
-    /* STATEMENT */
-
-    .statement {
-      background: #161616;
-      color: #fff;
-      padding: 135px 25px;
-      text-align: center;
-    }
-
-    .statement .eyebrow {
-      color: #aaa59d;
-    }
-
-    .statement h2 {
-      max-width: 1000px;
-      margin: auto;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(50px, 6vw, 85px);
-      line-height: .9;
-      font-weight: 400;
-    }
-
-    .statement em {
-      font-style: italic;
-    }
-
-    /* STORY */
-
-    .story {
-      max-width: 1400px;
-      margin: auto;
-      padding: 120px 42px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 90px;
-      align-items: center;
-    }
-
-    .story-image {
-      height: 620px;
-      overflow: hidden;
-      background: #ddd8cf;
-    }
-
-    .story-image img {
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .story-content h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(50px, 5vw, 75px);
-      line-height: .9;
-      font-weight: 500;
-      margin-bottom: 30px;
-    }
-
-    .story-content em {
-      font-style: italic;
-    }
-
-    .story-text {
-      max-width: 470px;
-      color: #716c64;
-      font-size: 12px;
-      line-height: 2;
-      margin-bottom: 30px;
-    }
-
-    .story-link {
-      font-size: 9px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      border-bottom: 1px solid #161616;
-      padding-bottom: 7px;
-    }
-
-    /* NEWSLETTER */
-
-    .newsletter {
-      background: #e7e1d7;
-      padding: 105px 25px;
-      text-align: center;
-    }
-
-    .newsletter h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 60px;
-      font-weight: 500;
-      margin-bottom: 15px;
-    }
-
-    .newsletter-description {
-      color: #716c64;
-      font-size: 11px;
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-
-    .newsletter-form {
-      max-width: 480px;
-      margin: auto;
-      display: flex;
-      border-bottom: 1px solid #161616;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      border: 0;
-      outline: 0;
-      background: transparent;
-      padding: 15px 0;
-      font-size: 11px;
-    }
-
-    .newsletter-form button {
-      border: 0;
-      background: transparent;
-      cursor: pointer;
-      font-size: 8px;
-      font-weight: 600;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #161616;
-      color: #fff;
-      padding: 75px 42px 25px;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: auto;
-    }
-
-    .footer-top {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 50px;
-      padding-bottom: 70px;
-    }
-
-    .footer-brand h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 47px;
-      font-weight: 500;
-      letter-spacing: 5px;
-      margin-bottom: 10px;
-    }
-
-    .footer-brand p {
-      max-width: 260px;
-      color: #99958e;
-      font-size: 10px;
-      line-height: 1.8;
-    }
-
-    .footer-column h4 {
-      font-size: 8px;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-
-    .footer-column a {
-      display: block;
-      color: #99958e;
-      font-size: 10px;
-      margin-bottom: 12px;
-    }
-
-    .footer-column a:hover {
-      color: #fff;
-    }
-
-    .footer-bottom {
-      border-top: 1px solid #343434;
-      padding-top: 22px;
-      display: flex;
-      justify-content: space-between;
-      color: #77736d;
-      font-size: 8px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 1000px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 20px;
-      }
-
-      .hero-content {
-        padding: 60px 40px;
-      }
-
-      .hero-image {
-        min-height: 600px;
-      }
-
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .story {
-        gap: 45px;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 650px) {
-
-      .header-inner {
-        min-height: 72px;
-        padding: 0 18px;
-      }
-
-      .logo {
-        font-size: 29px;
-      }
-
-      .action {
-        width: 36px;
-        height: 36px;
-      }
-
-      .bag {
-        padding: 0 12px;
-      }
-
-      .hero {
-        padding: 12px;
-      }
-
-      .hero-content {
-        padding: 55px 25px;
-      }
-
-      .hero-content h1 {
-        font-size: 65px;
-      }
-
-      .hero-image {
-        min-height: 480px;
-      }
-
-      .collection {
-        padding: 50px 18px 80px;
-      }
-
-      .collection-head {
-        display: block;
-      }
-
-      .collection-head h2 {
-        font-size: 47px;
-        margin-bottom: 25px;
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .product-image {
-        height: 500px;
-      }
-
-      .story {
-        padding: 80px 20px;
-        grid-template-columns: 1fr;
-      }
-
-      .story-image {
-        height: 470px;
-      }
-
-      .newsletter {
-        padding: 80px 20px;
-      }
-
-      .newsletter h2 {
-        font-size: 46px;
-      }
-
-      footer {
-        padding: 60px 25px 25px;
-      }
-
-      .footer-top {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px 25px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ÉLANE — Luxury Fragrances</title>
+
+<meta name="description" content="ÉLANE — A refined collection of luxury fragrances crafted for unforgettable moments.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#f6f3ed;
+  color:#171717;
+  font-family:"Montserrat",sans-serif;
+  font-weight:400;
+  overflow-x:hidden;
+}
+
+button,
+input{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+  height:34px;
+  background:#171717;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:8px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navbar{
+  height:82px;
+  padding:0 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:#f6f3ed;
+  border-bottom:1px solid #ded9d0;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.logo{
+  font-family:"Cormorant Garamond",serif;
+  font-size:34px;
+  letter-spacing:5px;
+  font-weight:600;
+}
+
+.nav-links{
+  display:flex;
+  gap:36px;
+  align-items:center;
+}
+
+.nav-links a{
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:1px;
+  background:#171717;
+  bottom:-7px;
+  left:0;
+  transition:.3s;
+}
+
+.nav-links a:hover::after{
+  width:100%;
+}
+
+.nav-actions{
+  display:flex;
+  gap:10px;
+}
+
+.nav-icon{
+  width:42px;
+  height:42px;
+  border:1px solid #d7d1c8;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  transition:.3s;
+}
+
+.nav-icon:hover{
+  background:#171717;
+  color:#fff;
+}
+
+.bag-button{
+  position:relative;
+}
+
+.bag-count{
+  position:absolute;
+  top:-5px;
+  right:-5px;
+  min-width:17px;
+  height:17px;
+  padding:0 4px;
+  border-radius:50%;
+  background:#171717;
+  color:white;
+  font-size:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:calc(100vh - 116px);
+  display:grid;
+  grid-template-columns:48% 52%;
+  border-bottom:1px solid #ddd7ce;
+}
+
+.hero-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:8%;
+}
+
+.hero-eyebrow{
+  font-size:8px;
+  letter-spacing:3px;
+  color:#7d776f;
+  margin-bottom:25px;
+  text-transform:uppercase;
+}
+
+.hero h1{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(70px,9vw,150px);
+  font-weight:400;
+  line-height:.75;
+  letter-spacing:-4px;
+  margin-bottom:35px;
+}
+
+.hero-subtitle{
+  max-width:390px;
+  color:#77716a;
+  font-size:11px;
+  line-height:2;
+  margin-bottom:40px;
+}
+
+.hero-cta{
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.primary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:#171717;
+  color:#fff;
+  border:1px solid #171717;
+  min-height:50px;
+  padding:0 28px;
+  font-size:8px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:.35s;
+}
+
+.primary-btn:hover{
+  background:transparent;
+  color:#171717;
+}
+
+.secondary-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 25px;
+  border:1px solid #cfc8be;
+  font-size:8px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  transition:.35s;
+}
+
+.secondary-btn:hover{
+  background:#171717;
+  color:#fff;
+  border-color:#171717;
+}
+
+.hero-product{
+  position:relative;
+  overflow:hidden;
+  background:#e5e0d7;
+  min-height:700px;
+}
+
+.hero-product img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+
+.hero-product:hover img{
+  transform:scale(1.035);
+}
+
+.hero-label{
+  position:absolute;
+  top:25px;
+  left:25px;
+  background:#fff;
+  padding:12px 16px;
+  font-size:7px;
+  letter-spacing:2px;
+  font-weight:600;
+}
+
+.hero-product-name{
+  position:absolute;
+  bottom:30px;
+  left:30px;
+  color:#fff;
+}
+
+.hero-product-name span{
+  display:block;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:8px;
+}
+
+.hero-product-name h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:55px;
+  font-weight:400;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+  padding:130px 8%;
+  text-align:center;
+  max-width:1000px;
+  margin:auto;
+}
+
+.intro-small{
+  font-size:8px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#817b73;
+  margin-bottom:25px;
+}
+
+.intro h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(42px,6vw,78px);
+  font-weight:400;
+  line-height:1;
+  margin-bottom:28px;
+}
+
+.intro p{
+  color:#77716a;
+  max-width:590px;
+  margin:auto;
+  font-size:11px;
+  line-height:2;
+}
+
+
+/* =========================================================
+   COLLECTION HEADER
+========================================================= */
+
+.collection{
+  padding:20px 5% 120px;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  margin-bottom:55px;
+}
+
+.section-number{
+  color:#888178;
+  font-size:8px;
+  letter-spacing:2px;
+}
+
+.section-head h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:65px;
+  font-weight:400;
+  line-height:.8;
+}
+
+
+/* =========================================================
+   PREMIUM PRODUCT GRID
+========================================================= */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:22px;
+  align-items:start;
+}
+
+.product{
+  background:#eae6de;
+  position:relative;
+  overflow:hidden;
+  transition:transform .45s ease, box-shadow .45s ease;
+}
+
+.product:hover{
+  transform:translateY(-7px);
+  box-shadow:0 22px 50px rgba(20,20,20,.12);
+}
+
+.product:nth-child(1){
+  grid-column:span 7;
+}
+
+.product:nth-child(2){
+  grid-column:span 5;
+  margin-top:95px;
+}
+
+.product:nth-child(3){
+  grid-column:span 5;
+}
+
+.product:nth-child(4){
+  grid-column:span 7;
+  margin-top:50px;
+}
+
+.product:nth-child(5){
+  grid-column:span 7;
+}
+
+.product:nth-child(6){
+  grid-column:span 5;
+  margin-top:95px;
+}
+
+.product-image{
+  height:560px;
+  position:relative;
+  overflow:hidden;
+  background:#ddd8cf;
+}
+
+.product:nth-child(1) .product-image{
+  height:720px;
+}
+
+.product:nth-child(4) .product-image,
+.product:nth-child(5) .product-image{
+  height:620px;
+}
+
+.product-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 1s cubic-bezier(.2,.7,.2,1);
+}
+
+.product:hover .product-image img{
+  transform:scale(1.045);
+}
+
+.tag{
+  position:absolute;
+  z-index:5;
+  top:18px;
+  left:18px;
+  background:#fff;
+  padding:10px 13px;
+  font-size:7px;
+  font-weight:600;
+  letter-spacing:1.8px;
+}
+
+.heart{
+  position:absolute;
+  z-index:5;
+  top:16px;
+  right:16px;
+  width:43px;
+  height:43px;
+  border:none;
+  border-radius:50%;
+  background:rgba(255,255,255,.95);
+  font-size:18px;
+  transition:.3s;
+}
+
+.heart:hover{
+  transform:scale(1.08);
+}
+
+.heart.active{
+  background:#171717;
+  color:#fff;
+}
+
+.product-info{
+  padding:27px 28px 32px;
+}
+
+.product-type{
+  color:#827c74;
+  font-size:8px;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+
+.product-info h3{
+  font-family:"Cormorant Garamond",serif;
+  font-size:39px;
+  font-weight:500;
+  line-height:1;
+  margin-bottom:12px;
+}
+
+.product:nth-child(1) .product-info h3{
+  font-size:52px;
+}
+
+.product-info p:last-of-type{
+  color:#77716a;
+  font-size:10px;
+  line-height:1.8;
+  max-width:430px;
+  margin-bottom:24px;
+}
+
+.product-actions{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.add-cart{
+  border:1px solid #171717;
+  background:#171717;
+  color:#fff;
+  padding:14px 20px;
+  font-size:7px;
+  font-weight:600;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+  transition:.3s;
+}
+
+.add-cart:hover{
+  background:transparent;
+  color:#171717;
+}
+
+.discover{
+  font-size:8px;
+  letter-spacing:1.7px;
+  text-transform:uppercase;
+  border-bottom:1px solid #171717;
+  padding-bottom:5px;
+}
+
+
+/* =========================================================
+   STATEMENT
+========================================================= */
+
+.statement{
+  background:#171717;
+  color:#fff;
+  padding:150px 8%;
+  text-align:center;
+}
+
+.statement-small{
+  font-size:8px;
+  letter-spacing:3px;
+  color:#aaa39a;
+  margin-bottom:30px;
+}
+
+.statement h2{
+  font-family:"Cormorant Garamond",serif;
+  font-weight:400;
+  font-size:clamp(48px,7vw,95px);
+  line-height:.95;
+  max-width:1000px;
+  margin:auto;
+}
+
+.statement p{
+  max-width:520px;
+  margin:35px auto 0;
+  color:#aaa39a;
+  font-size:10px;
+  line-height:2;
+}
+
+
+/* =========================================================
+   STORY
+========================================================= */
+
+.story{
+  display:grid;
+  grid-template-columns:50% 50%;
+  min-height:700px;
+}
+
+.story-image{
+  background:#ddd8cf;
+  overflow:hidden;
+}
+
+.story-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform 1s ease;
+}
+
+.story-image:hover img{
+  transform:scale(1.03);
+}
+
+.story-content{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:10%;
+}
+
+.story-label{
+  color:#817b73;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:25px;
+}
+
+.story-content h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:70px;
+  font-weight:400;
+  line-height:.9;
+  margin-bottom:30px;
+}
+
+.story-content p{
+  color:#77716a;
+  font-size:11px;
+  line-height:2;
+  max-width:450px;
+  margin-bottom:35px;
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.newsletter{
+  padding:120px 7%;
+  text-align:center;
+  border-top:1px solid #ddd7ce;
+}
+
+.newsletter-label{
+  color:#817b73;
+  font-size:8px;
+  letter-spacing:3px;
+  margin-bottom:25px;
+}
+
+.newsletter h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:65px;
+  font-weight:400;
+  margin-bottom:18px;
+}
+
+.newsletter p{
+  color:#77716a;
+  font-size:10px;
+  margin-bottom:35px;
+}
+
+.newsletter-form{
+  display:flex;
+  max-width:510px;
+  margin:auto;
+  border-bottom:1px solid #171717;
+}
+
+.newsletter-form input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  padding:16px 5px;
+  font-size:10px;
+}
+
+.newsletter-form button{
+  border:none;
+  background:transparent;
+  font-size:8px;
+  font-weight:600;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  background:#171717;
+  color:#fff;
+  padding:70px 5% 30px;
+}
+
+.footer-main{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:50px;
+  padding-bottom:60px;
+}
+
+.footer-logo{
+  font-family:"Cormorant Garamond",serif;
+  font-size:42px;
+  letter-spacing:5px;
+  margin-bottom:18px;
+}
+
+.footer-brand p{
+  color:#9f9991;
+  max-width:310px;
+  font-size:9px;
+  line-height:2;
+}
+
+.footer-column h4{
+  font-size:8px;
+  letter-spacing:2px;
+  margin-bottom:22px;
+}
+
+.footer-column a{
+  display:block;
+  color:#9f9991;
+  font-size:9px;
+  margin-bottom:13px;
+  transition:.3s;
+}
+
+.footer-column a:hover{
+  color:#fff;
+}
+
+.footer-bottom{
+  border-top:1px solid #333;
+  padding-top:25px;
+  display:flex;
+  justify-content:space-between;
+  color:#77716a;
+  font-size:8px;
+}
+
+
+/* =========================================================
+   BAG DRAWER
+========================================================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  z-index:998;
+  opacity:0;
+  visibility:hidden;
+  transition:.35s;
+}
+
+.overlay.show{
+  opacity:1;
+  visibility:visible;
+}
+
+.bag-drawer{
+  position:fixed;
+  top:0;
+  right:0;
+  width:min(440px,100%);
+  height:100vh;
+  background:#f6f3ed;
+  z-index:999;
+  transform:translateX(100%);
+  transition:transform .45s cubic-bezier(.2,.7,.2,1);
+  display:flex;
+  flex-direction:column;
+}
+
+.bag-drawer.open{
+  transform:translateX(0);
+}
+
+.bag-header{
+  padding:27px 28px;
+  border-bottom:1px solid #ddd7ce;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.bag-header h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:34px;
+  font-weight:500;
+}
+
+.close-bag{
+  width:38px;
+  height:38px;
+  border:1px solid #d5cec4;
+  background:transparent;
+  font-size:18px;
+}
+
+.bag-items{
+  flex:1;
+  overflow-y:auto;
+  padding:25px;
+}
+
+.empty-bag{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.empty-bag span{
+  font-family:"Cormorant Garamond",serif;
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.empty-bag p{
+  color:#817b73;
+  font-size:9px;
+  letter-spacing:1px;
+}
+
+.cart-item{
+  display:grid;
+  grid-template-columns:85px 1fr auto;
+  gap:15px;
+  align-items:center;
+  padding-bottom:20px;
+  margin-bottom:20px;
+  border-bottom:1px solid #ddd7ce;
+}
+
+.cart-item img{
+  width:85px;
+  height:105px;
+  object-fit:cover;
+  background:#dedad2;
+}
+
+.cart-item-info h4{
+  font-family:"Cormorant Garamond",serif;
+  font-size:24px;
+  font-weight:500;
+  margin-bottom:5px;
+}
+
+.cart-item-info small{
+  color:#817b73;
+  font-size:8px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.quantity{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:12px;
+}
+
+.quantity button{
+  width:25px;
+  height:25px;
+  border:1px solid #ccc5bb;
+  background:transparent;
+}
+
+.quantity span{
+  font-size:9px;
+}
+
+.remove-item{
+  margin-top:8px;
+  border:none;
+  background:none;
+  color:#8b8379;
+  font-size:7px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.cart-price{
+  font-size:10px;
+  font-weight:600;
+}
+
+.bag-footer{
+  padding:25px;
+  border-top:1px solid #ddd7ce;
+}
+
+.total-row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.total-row span:first-child{
+  font-size:9px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+.total-price{
+  font-family:"Cormorant Garamond",serif;
+  font-size:28px;
+}
+
+.checkout-btn{
+  width:100%;
+  min-height:54px;
+  border:none;
+  background:#171717;
+  color:#fff;
+  font-size:8px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-panel{
+  position:fixed;
+  inset:0;
+  background:#f6f3ed;
+  z-index:1000;
+  padding:50px 8%;
+  transform:translateY(-100%);
+  transition:transform .45s ease;
+}
+
+.search-panel.open{
+  transform:translateY(0);
+}
+
+.search-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.search-top h2{
+  font-family:"Cormorant Garamond",serif;
+  font-size:42px;
+  font-weight:400;
+}
+
+.close-search{
+  border:1px solid #d5cec4;
+  background:transparent;
+  width:42px;
+  height:42px;
+}
+
+.search-input{
+  width:100%;
+  border:none;
+  border-bottom:1px solid #171717;
+  background:transparent;
+  outline:none;
+  font-family:"Cormorant Garamond",serif;
+  font-size:45px;
+  padding:25px 0;
+  margin-top:80px;
+}
+
+.search-result{
+  margin-top:30px;
+  color:#77716a;
+  font-size:10px;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,120px);
+  background:#171717;
+  color:#fff;
+  padding:15px 23px;
+  font-size:8px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  z-index:1200;
+  opacity:0;
+  transition:.4s;
+}
+
+.toast.show{
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+  display:none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .navbar{
+    height:72px;
+  }
+
+  .mobile-menu{
+    display:flex;
+    width:42px;
+    height:42px;
+    border:1px solid #d7d1c8;
+    background:transparent;
+    align-items:center;
+    justify-content:center;
+    font-size:17px;
+  }
+
+  .hero{
+    grid-template-columns:1fr;
+  }
+
+  .hero-content{
+    padding:90px 7%;
+  }
+
+  .hero-product{
+    min-height:600px;
+  }
+
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .product:nth-child(1),
+  .product:nth-child(2),
+  .product:nth-child(3),
+  .product:nth-child(4),
+  .product:nth-child(5),
+  .product:nth-child(6){
+    grid-column:span 1;
+    margin-top:0;
+  }
+
+  .product:nth-child(1) .product-image{
+    height:600px;
+  }
+
+  .product-image,
+  .product:nth-child(4) .product-image,
+  .product:nth-child(5) .product-image{
+    height:500px;
+  }
+
+  .story{
+    grid-template-columns:1fr;
+  }
+
+  .story-image{
+    min-height:550px;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr 1fr;
+  }
+}
+
+
+@media(max-width:600px){
+
+  .topbar{
+    font-size:7px;
+    letter-spacing:1.8px;
+  }
+
+  .logo{
+    font-size:27px;
+    letter-spacing:4px;
+  }
+
+  .nav-actions{
+    gap:5px;
+  }
+
+  .nav-icon,
+  .mobile-menu{
+    width:38px;
+    height:38px;
+  }
+
+  .hero-content{
+    padding:75px 7%;
+  }
+
+  .hero h1{
+    font-size:76px;
+    letter-spacing:-3px;
+  }
+
+  .hero-product{
+    min-height:540px;
+  }
+
+  .intro{
+    padding:90px 7%;
+  }
+
+  .collection{
+    padding:10px 6% 80px;
+  }
+
+  .section-head{
+    margin-bottom:35px;
+  }
+
+  .section-head h2{
+    font-size:50px;
+  }
+
+  .products{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+
+  .product:nth-child(1) .product-image{
+    height:600px;
+  }
+
+  .product-image,
+  .product:nth-child(4) .product-image,
+  .product:nth-child(5) .product-image{
+    height:500px;
+  }
+
+  .product-info h3{
+    font-size:36px;
+  }
+
+  .product:nth-child(1) .product-info h3{
+    font-size:45px;
+  }
+
+  .statement{
+    padding:100px 7%;
+  }
+
+  .story-content{
+    padding:75px 8%;
+  }
+
+  .story-content h2{
+    font-size:58px;
+  }
+
+  .newsletter{
+    padding:90px 7%;
+  }
+
+  .newsletter h2{
+    font-size:52px;
+  }
+
+  .newsletter-form{
+    flex-direction:column;
+    border-bottom:none;
+  }
+
+  .newsletter-form input{
+    border-bottom:1px solid #171717;
+    margin-bottom:10px;
+  }
+
+  .newsletter-form button{
+    background:#171717;
+    color:#fff;
+    padding:16px;
+  }
+
+  .footer-main{
+    grid-template-columns:1fr;
+    gap:35px;
+  }
+
+  .footer-bottom{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .search-panel{
+    padding:30px 7%;
+  }
+
+  .search-input{
+    font-size:32px;
+    margin-top:50px;
+  }
+}
+
+</style>
 </head>
+
 
 <body>
 
-  <div class="topbar">
-    Complimentary delivery on orders above PKR 5,000
+
+<!-- =======================================================
+     TOP BAR
+======================================================= -->
+
+<div class="topbar">
+  Complimentary shipping on selected orders
+</div>
+
+
+<!-- =======================================================
+     NAVBAR
+======================================================= -->
+
+<header class="navbar">
+
+  <a href="#" class="logo">ÉLANE</a>
+
+  <nav class="nav-links">
+    <a href="#">Home</a>
+    <a href="#collection">Collection</a>
+    <a href="#story">Our Story</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+
+    <button class="nav-icon" id="searchBtn" aria-label="Search">
+      ⌕
+    </button>
+
+    <button class="nav-icon bag-button" id="bagBtn" aria-label="Shopping bag">
+      ♡
+      <span class="bag-count" id="bagCount">0</span>
+    </button>
+
+    <button class="mobile-menu" id="mobileMenu" aria-label="Menu">
+      ☰
+    </button>
+
   </div>
 
-  <header>
-    <div class="header-inner">
+</header>
 
-      <a href="#home" class="logo">ÉLANE</a>
 
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#collection">Collection</a>
-        <a href="#about">Our Story</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-      <div class="header-actions">
-        <button class="action" aria-label="Search">⌕</button>
-        <button class="action" aria-label="Wishlist">♡</button>
+<section class="hero">
 
-        <button class="action bag">
-          Bag <span id="cartCount">0</span>
-        </button>
-      </div>
+  <div class="hero-content">
+
+    <p class="hero-eyebrow">
+      The New ÉLANE Collection
+    </p>
+
+    <h1>
+      ISHQ
+    </h1>
+
+    <p class="hero-subtitle">
+      A fragrance created around emotion, presence and memory.
+      Meet the newest addition to the ÉLANE collection.
+    </p>
+
+    <div class="hero-cta">
+
+      <a href="#collection" class="primary-btn">
+        Explore Collection
+      </a>
+
+      <button class="secondary-btn" onclick="addToCart('ISHQ','/luxury-perfume-store/ishq.webp')">
+        Add to Bag
+      </button>
 
     </div>
-  </header>
 
-  <main>
+  </div>
 
-    <!-- HERO -->
 
-    <section class="hero" id="home">
+  <div class="hero-product">
 
-      <div class="hero-content">
+    <span class="hero-label">
+      NEW ADDITION
+    </span>
 
-        <p class="eyebrow">
-          NEW ARRIVAL · ÉLANE
-        </p>
+    <img
+      src="/luxury-perfume-store/ishq.webp"
+      alt="ISHQ luxury perfume">
 
-        <h1>
-          Meet
-          <span>ISHQ.</span>
-        </h1>
+    <div class="hero-product-name">
+      <span>SIGNATURE FRAGRANCE</span>
+      <h2>ISHQ</h2>
+    </div>
 
-        <p class="hero-text">
-          A fragrance made to be remembered.
-          Discover ISHQ — the newest addition to the ÉLANE collection,
-          presented with a character all its own.
-        </p>
+  </div>
 
-        <a href="#collection" class="hero-btn">
-          Discover ISHQ
-        </a>
+</section>
 
-      </div>
 
-      <div class="hero-image">
+<!-- =======================================================
+     INTRO
+======================================================= -->
 
-        <div class="new-label">
+<section class="intro">
+
+  <p class="intro-small">
+    The ÉLANE Philosophy
+  </p>
+
+  <h2>
+    Fragrance is more than a scent.
+  </h2>
+
+  <p>
+    It is a memory, a presence and a quiet expression of who you are.
+    ÉLANE brings together carefully selected fragrances designed
+    to leave a lasting impression.
+  </p>
+
+</section>
+
+
+<!-- =======================================================
+     COLLECTION
+======================================================= -->
+
+<section class="collection" id="collection">
+
+  <div class="section-head">
+
+    <div>
+      <span class="section-number">01 — COLLECTION</span>
+    </div>
+
+    <h2>
+      The Edit
+    </h2>
+
+  </div>
+
+
+  <div class="products">
+
+
+    <!-- ISHQ -->
+
+    <article class="product">
+
+      <div class="product-image">
+
+        <span class="tag">
           NEW ADDITION
-        </div>
+        </span>
 
-        <!-- FIXED GITHUB PAGES IMAGE PATH -->
+        <button
+          class="heart"
+          aria-label="Wishlist ISHQ"
+          onclick="toggleWishlist(this,'ISHQ')">
+          ♡
+        </button>
 
         <img
           src="/luxury-perfume-store/ishq.webp"
           alt="ISHQ perfume"
-          loading="eager">
-
-        <div class="hero-card">
-          <small>Featured fragrance</small>
-          <strong>ISHQ</strong>
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- INTRO -->
-
-    <section class="intro">
-
-      <p class="eyebrow">
-        THE ÉLANE COLLECTION
-      </p>
-
-      <h2>
-        Fragrance that speaks
-        <br>
-        <em>before you do.</em>
-      </h2>
-
-      <p>
-        Explore a carefully selected collection of fragrances,
-        each with its own personality, presence and story.
-      </p>
-
-    </section>
-
-
-    <!-- COLLECTION -->
-
-    <section class="collection" id="collection">
-
-      <div class="collection-head">
-
-        <div>
-
-          <p class="eyebrow">
-            SHOP THE COLLECTION
-          </p>
-
-          <h2>
-            Six Distinct Fragrances
-          </h2>
-
-        </div>
-
-        <a href="#collection" class="view-all">
-          Explore Collection →
-        </a>
-
-      </div>
-
-
-      <div class="products">
-
-
-        <!-- ISHQ -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              NEW ADDITION
-            </span>
-
-            <button class="heart" aria-label="Add ISHQ to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/ishq.webp"
-              alt="ISHQ perfume"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              FRAGRANCE
-            </p>
-
-            <h3>
-              ISHQ
-            </h3>
-
-            <p>
-              The newest addition to the ÉLANE collection.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- WANTED + FLORA -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              COLLECTION
-            </span>
-
-            <button class="heart" aria-label="Add Wanted + Flora to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/wanted-flora.webp"
-              alt="Wanted + Flora"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              FRAGRANCE
-            </p>
-
-            <h3>
-              Wanted + Flora
-            </h3>
-
-            <p>
-              A distinctive fragrance from the ÉLANE collection.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- AYAT KIDS COLOGNE -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              COLLECTION
-            </span>
-
-            <button class="heart" aria-label="Add Ayat Kids Cologne to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/ayat.webp"
-              alt="Ayat Kids Cologne"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              COLOGNE
-            </p>
-
-            <h3>
-              Ayat Kids Cologne
-            </h3>
-
-            <p>
-              A carefully presented fragrance from the collection.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- AURA -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              COLLECTION
-            </span>
-
-            <button class="heart" aria-label="Add Aura to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/aura.webp"
-              alt="Aura"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              FRAGRANCE
-            </p>
-
-            <h3>
-              Aura
-            </h3>
-
-            <p>
-              Designed to become part of your everyday presence.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- 295 MEN -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              FOR HIM
-            </span>
-
-            <button class="heart" aria-label="Add 295 Men to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/295-men.webp"
-              alt="295 Men"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              MEN'S FRAGRANCE
-            </p>
-
-            <h3>
-              295 Men
-            </h3>
-
-            <p>
-              A refined fragrance created for a confident presence.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-
-        <!-- CRAZE -->
-
-        <article class="product">
-
-          <div class="product-image">
-
-            <span class="tag">
-              COLLECTION
-            </span>
-
-            <button class="heart" aria-label="Add Craze to wishlist">
-              ♡
-            </button>
-
-            <img
-              src="/luxury-perfume-store/craze.webp"
-              alt="Craze"
-              loading="lazy">
-
-          </div>
-
-          <div class="product-info">
-
-            <p class="product-type">
-              FRAGRANCE
-            </p>
-
-            <h3>
-              Craze
-            </h3>
-
-            <p>
-              A bold addition to the ÉLANE fragrance collection.
-            </p>
-
-            <a href="#contact" class="discover">
-              Discover Fragrance →
-            </a>
-
-          </div>
-
-        </article>
-
-      </div>
-
-    </section>
-
-
-    <!-- BRAND STATEMENT -->
-
-    <section class="statement">
-
-      <p class="eyebrow">
-        THE ÉLANE PHILOSOPHY
-      </p>
-
-      <h2>
-        Not just a fragrance.
-        <br>
-        <em>A lasting impression.</em>
-      </h2>
-
-    </section>
-
-
-    <!-- STORY -->
-
-    <section class="story" id="about">
-
-      <div class="story-image">
-
-        <img
-          src="/luxury-perfume-store/wanted-flora.webp"
-          alt="ÉLANE fragrance"
           loading="lazy">
 
       </div>
 
-      <div class="story-content">
+      <div class="product-info">
 
-        <p class="eyebrow">
-          OUR STORY
+        <p class="product-type">
+          Signature Fragrance
         </p>
 
-        <h2>
-          Made to leave
-          <br>
-          <em>something behind.</em>
-        </h2>
+        <h3>
+          ISHQ
+        </h3>
 
-        <p class="story-text">
-          ÉLANE is built around a simple idea:
-          fragrance should feel personal. Every bottle,
-          every scent and every detail is part of an
-          experience designed to stay with you.
+        <p>
+          The newest addition to ÉLANE — created to become
+          an unforgettable signature.
         </p>
 
-        <a href="#contact" class="story-link">
-          Discover Our Story →
-        </a>
+        <div class="product-actions">
+
+          <button
+            class="add-cart"
+            onclick="addToCart('ISHQ','/luxury-perfume-store/ishq.webp')">
+            Add to Bag
+          </button>
+
+          <a href="#contact" class="discover">
+            Discover →
+          </a>
+
+        </div>
 
       </div>
 
-    </section>
+    </article>
 
 
-    <!-- NEWSLETTER -->
+    <!-- WANTED + FLORA -->
 
-    <section class="newsletter" id="contact">
+    <article class="product">
 
-      <p class="eyebrow">
-        JOIN ÉLANE
-      </p>
+      <div class="product-image">
 
-      <h2>
-        Enter the world of fragrance.
-      </h2>
+        <span class="tag">
+          COLLECTION
+        </span>
 
-      <p class="newsletter-description">
-        Discover new arrivals, collection updates
-        and exclusive ÉLANE releases.
-      </p>
-
-      <form class="newsletter-form">
-
-        <input
-          type="email"
-          placeholder="Your email address"
-          required>
-
-        <button type="submit">
-          Subscribe →
+        <button
+          class="heart"
+          aria-label="Wishlist Wanted Flora"
+          onclick="toggleWishlist(this,'Wanted + Flora')">
+          ♡
         </button>
 
-      </form>
+        <img
+          src="/luxury-perfume-store/wanted-flora.webp"
+          alt="Wanted + Flora perfume"
+          loading="lazy">
 
-    </section>
+      </div>
 
-  </main>
+      <div class="product-info">
 
+        <p class="product-type">
+          Fragrance
+        </p>
 
-  <!-- FOOTER -->
+        <h3>
+          Wanted + Flora
+        </h3>
 
-  <footer>
+        <p>
+          A distinctive fragrance with its own character,
+          identity and presence.
+        </p>
 
-    <div class="footer-inner">
+        <div class="product-actions">
 
-      <div class="footer-top">
+          <button
+            class="add-cart"
+            onclick="addToCart('Wanted + Flora','/luxury-perfume-store/wanted-flora.webp')">
+            Add to Bag
+          </button>
 
-        <div class="footer-brand">
-
-          <h2>
-            ÉLANE
-          </h2>
-
-          <p>
-            Modern fragrances.
-            Distinctive impressions.
-          </p>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            SHOP
-          </h4>
-
-          <a href="#collection">
-            Collection
-          </a>
-
-          <a href="#collection">
-            New Arrival
-          </a>
-
-          <a href="#collection">
-            Fragrances
-          </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            EXPLORE
-          </h4>
-
-          <a href="#about">
-            Our Story
-          </a>
-
-          <a href="#contact">
-            Contact
-          </a>
-
-          <a href="#home">
-            Home
-          </a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            FOLLOW
-          </h4>
-
-          <a href="#">
-            Instagram
-          </a>
-
-          <a href="#">
-            Facebook
-          </a>
-
-          <a href="#">
-            TikTok
+          <a href="#contact" class="discover">
+            Discover →
           </a>
 
         </div>
 
       </div>
 
+    </article>
 
-      <div class="footer-bottom">
 
-        <span>
-          © 2026 ÉLANE. All rights reserved.
+    <!-- AYAT -->
+
+    <article class="product">
+
+      <div class="product-image">
+
+        <span class="tag">
+          COLLECTION
         </span>
 
-        <span>
-          Luxury, beautifully bottled.
+        <button
+          class="heart"
+          aria-label="Wishlist Ayat"
+          onclick="toggleWishlist(this,'Ayat Kids Cologne')">
+          ♡
+        </button>
+
+        <img
+          src="/luxury-perfume-store/ayat.webp"
+          alt="Ayat Kids Cologne"
+          loading="lazy">
+
+      </div>
+
+      <div class="product-info">
+
+        <p class="product-type">
+          Cologne
+        </p>
+
+        <h3>
+          Ayat Kids Cologne
+        </h3>
+
+        <p>
+          A carefully presented fragrance from the
+          ÉLANE collection.
+        </p>
+
+        <div class="product-actions">
+
+          <button
+            class="add-cart"
+            onclick="addToCart('Ayat Kids Cologne','/luxury-perfume-store/ayat.webp')">
+            Add to Bag
+          </button>
+
+          <a href="#contact" class="discover">
+            Discover →
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- AURA -->
+
+    <article class="product">
+
+      <div class="product-image">
+
+        <span class="tag">
+          COLLECTION
         </span>
 
+        <button
+          class="heart"
+          aria-label="Wishlist Aura"
+          onclick="toggleWishlist(this,'Aura')">
+          ♡
+        </button>
+
+        <img
+          src="/luxury-perfume-store/aura.webp"
+          alt="Aura perfume"
+          loading="lazy">
+
+      </div>
+
+      <div class="product-info">
+
+        <p class="product-type">
+          Fragrance
+        </p>
+
+        <h3>
+          Aura
+        </h3>
+
+        <p>
+          Designed to become part of your everyday presence.
+        </p>
+
+        <div class="product-actions">
+
+          <button
+            class="add-cart"
+            onclick="addToCart('Aura','/luxury-perfume-store/aura.webp')">
+            Add to Bag
+          </button>
+
+          <a href="#contact" class="discover">
+            Discover →
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- 295 MEN -->
+
+    <article class="product">
+
+      <div class="product-image">
+
+        <span class="tag">
+          FOR HIM
+        </span>
+
+        <button
+          class="heart"
+          aria-label="Wishlist 295 Men"
+          onclick="toggleWishlist(this,'295 Men')">
+          ♡
+        </button>
+
+        <img
+          src="/luxury-perfume-store/295-men.webp"
+          alt="295 Men perfume"
+          loading="lazy">
+
+      </div>
+
+      <div class="product-info">
+
+        <p class="product-type">
+          Men's Fragrance
+        </p>
+
+        <h3>
+          295 Men
+        </h3>
+
+        <p>
+          A refined fragrance created for a confident presence.
+        </p>
+
+        <div class="product-actions">
+
+          <button
+            class="add-cart"
+            onclick="addToCart('295 Men','/luxury-perfume-store/295-men.webp')">
+            Add to Bag
+          </button>
+
+          <a href="#contact" class="discover">
+            Discover →
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+    <!-- CRAZE -->
+
+    <article class="product">
+
+      <div class="product-image">
+
+        <span class="tag">
+          COLLECTION
+        </span>
+
+        <button
+          class="heart"
+          aria-label="Wishlist Craze"
+          onclick="toggleWishlist(this,'Craze')">
+          ♡
+        </button>
+
+        <img
+          src="/luxury-perfume-store/craze.webp"
+          alt="Craze perfume"
+          loading="lazy">
+
+      </div>
+
+      <div class="product-info">
+
+        <p class="product-type">
+          Fragrance
+        </p>
+
+        <h3>
+          Craze
+        </h3>
+
+        <p>
+          A bold addition to the ÉLANE fragrance collection.
+        </p>
+
+        <div class="product-actions">
+
+          <button
+            class="add-cart"
+            onclick="addToCart('Craze','/luxury-perfume-store/craze.webp')">
+            Add to Bag
+          </button>
+
+          <a href="#contact" class="discover">
+            Discover →
+          </a>
+
+        </div>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     STATEMENT
+======================================================= -->
+
+<section class="statement">
+
+  <p class="statement-small">
+    ÉLANE — ESSENCE OF PRESENCE
+  </p>
+
+  <h2>
+    Leave a memory before you leave the room.
+  </h2>
+
+  <p>
+    Discover fragrances selected for moments that deserve
+    to be remembered.
+  </p>
+
+</section>
+
+
+<!-- =======================================================
+     STORY
+======================================================= -->
+
+<section class="story" id="story">
+
+  <div class="story-image">
+
+    <img
+      src="/luxury-perfume-store/wanted-flora.webp"
+      alt="ÉLANE fragrance collection"
+      loading="lazy">
+
+  </div>
+
+
+  <div class="story-content">
+
+    <p class="story-label">
+      02 — OUR STORY
+    </p>
+
+    <h2>
+      Crafted<br>
+      with intention.
+    </h2>
+
+    <p>
+      ÉLANE is built around the belief that fragrance should
+      feel personal. Every bottle becomes part of the moments,
+      places and memories that define you.
+    </p>
+
+    <a href="#contact" class="primary-btn">
+      Contact ÉLANE
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     NEWSLETTER
+======================================================= -->
+
+<section class="newsletter" id="contact">
+
+  <p class="newsletter-label">
+    JOIN THE ÉLANE WORLD
+  </p>
+
+  <h2>
+    Stay in the scent.
+  </h2>
+
+  <p>
+    Receive new collection announcements and ÉLANE updates.
+  </p>
+
+  <form
+    class="newsletter-form"
+    id="newsletterForm">
+
+    <input
+      type="email"
+      id="emailInput"
+      placeholder="Your email address"
+      required>
+
+    <button type="submit">
+      Subscribe →
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer>
+
+  <div class="footer-main">
+
+    <div class="footer-brand">
+
+      <div class="footer-logo">
+        ÉLANE
+      </div>
+
+      <p>
+        A refined fragrance destination built around
+        individuality, elegance and unforgettable presence.
+      </p>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Explore</h4>
+
+      <a href="#">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#story">Our Story</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Information</h4>
+
+      <a href="#contact">Contact</a>
+      <a href="#contact">Newsletter</a>
+      <a href="#">Shipping</a>
+
+    </div>
+
+
+    <div class="footer-column">
+
+      <h4>Follow</h4>
+
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">Pinterest</a>
+
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 ÉLANE. All rights reserved.
+    </span>
+
+    <span>
+      Luxury Fragrance Collection
+    </span>
+
+  </div>
+
+</footer>
+
+
+<!-- =======================================================
+     BAG OVERLAY
+======================================================= -->
+
+<div class="overlay" id="overlay"></div>
+
+
+<!-- =======================================================
+     BAG DRAWER
+======================================================= -->
+
+<aside class="bag-drawer" id="bagDrawer">
+
+  <div class="bag-header">
+
+    <h2>
+      Your Bag
+    </h2>
+
+    <button
+      class="close-bag"
+      id="closeBag">
+      ×
+    </button>
+
+  </div>
+
+
+  <div class="bag-items" id="bagItems">
+
+    <div class="empty-bag">
+
+      <span>♡</span>
+
+      <p>
+        Your bag is currently empty.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="bag-footer">
+
+    <div class="total-row">
+
+      <span>
+        Total
+      </span>
+
+      <span class="total-price" id="totalPrice">
+        $0
+      </span>
+
+    </div>
+
+    <button
+      class="checkout-btn"
+      onclick="checkout()">
+      Proceed to Checkout
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- =======================================================
+     SEARCH PANEL
+======================================================= -->
+
+<div class="search-panel" id="searchPanel">
+
+  <div class="search-top">
+
+    <h2>
+      Search ÉLANE
+    </h2>
+
+    <button
+      class="close-search"
+      id="closeSearch">
+      ×
+    </button>
+
+  </div>
+
+
+  <input
+    type="text"
+    class="search-input"
+    id="searchInput"
+    placeholder="Search fragrance...">
+
+  <div
+    class="search-result"
+    id="searchResult">
+    Explore our fragrance collection.
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     TOAST
+======================================================= -->
+
+<div class="toast" id="toast">
+  Added to your bag
+</div>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+let cart = [];
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const bagBtn = document.getElementById("bagBtn");
+const bagDrawer = document.getElementById("bagDrawer");
+const closeBag = document.getElementById("closeBag");
+const overlay = document.getElementById("overlay");
+const bagItems = document.getElementById("bagItems");
+const bagCount = document.getElementById("bagCount");
+const totalPrice = document.getElementById("totalPrice");
+
+const searchBtn = document.getElementById("searchBtn");
+const searchPanel = document.getElementById("searchPanel");
+const closeSearch = document.getElementById("closeSearch");
+const searchInput = document.getElementById("searchInput");
+const searchResult = document.getElementById("searchResult");
+
+const toast = document.getElementById("toast");
+
+
+/* =========================================================
+   OPEN BAG
+========================================================= */
+
+function openBag(){
+
+  bagDrawer.classList.add("open");
+  overlay.classList.add("show");
+
+}
+
+
+/* =========================================================
+   CLOSE BAG
+========================================================= */
+
+function closeBagDrawer(){
+
+  bagDrawer.classList.remove("open");
+  overlay.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   BAG EVENTS
+========================================================= */
+
+bagBtn.addEventListener("click",openBag);
+
+closeBag.addEventListener("click",closeBagDrawer);
+
+overlay.addEventListener("click",closeBagDrawer);
+
+
+/* =========================================================
+   ADD TO CART
+========================================================= */
+
+function addToCart(name,image){
+
+  const existing = cart.find(item => item.name === name);
+
+  if(existing){
+
+    existing.quantity++;
+
+  }else{
+
+    cart.push({
+      name:name,
+      image:image,
+      quantity:1
+    });
+
+  }
+
+  updateCart();
+
+  showToast(name + " added to your bag");
+
+  openBag();
+
+}
+
+
+/* =========================================================
+   UPDATE CART
+========================================================= */
+
+function updateCart(){
+
+  let totalItems = 0;
+
+  cart.forEach(item => {
+    totalItems += item.quantity;
+  });
+
+  bagCount.textContent = totalItems;
+
+
+  if(cart.length === 0){
+
+    bagItems.innerHTML = `
+      <div class="empty-bag">
+        <span>♡</span>
+        <p>Your bag is currently empty.</p>
+      </div>
+    `;
+
+    totalPrice.textContent = "$0";
+
+    return;
+  }
+
+
+  bagItems.innerHTML = cart.map((item,index) => `
+
+    <div class="cart-item">
+
+      <img
+        src="${item.image}"
+        alt="${item.name}">
+
+      <div class="cart-item-info">
+
+        <h4>
+          ${item.name}
+        </h4>
+
+        <small>
+          ÉLANE Fragrance
+        </small>
+
+        <div class="quantity">
+
+          <button
+            onclick="changeQuantity(${index},-1)">
+            −
+          </button>
+
+          <span>
+            ${item.quantity}
+          </span>
+
+          <button
+            onclick="changeQuantity(${index},1)">
+            +
+          </button>
+
+        </div>
+
+        <button
+          class="remove-item"
+          onclick="removeFromCart(${index})">
+          Remove
+        </button>
+
+      </div>
+
+      <div class="cart-price">
+        $${item.quantity * 95}
       </div>
 
     </div>
 
-  </footer>
+  `).join("");
 
 
-  <script>
+  const total = cart.reduce(
+    (sum,item) => sum + (item.quantity * 95),
+    0
+  );
 
-    let cartCount = 0;
+  totalPrice.textContent = "$" + total;
 
-    const cart = document.getElementById("cartCount");
-
-    document.querySelectorAll(".discover").forEach(button => {
-
-      button.addEventListener("click", function() {
-
-        cartCount++;
-
-        cart.textContent = cartCount;
-
-      });
-
-    });
+}
 
 
-    document.querySelectorAll(".heart").forEach(button => {
+/* =========================================================
+   QUANTITY
+========================================================= */
 
-      button.addEventListener("click", function() {
+function changeQuantity(index,change){
 
-        if (this.textContent.trim() === "♡") {
+  cart[index].quantity += change;
 
-          this.textContent = "♥";
+  if(cart[index].quantity <= 0){
 
-        } else {
+    cart.splice(index,1);
 
-          this.textContent = "♡";
+  }
 
-        }
+  updateCart();
 
-      });
-
-    });
+}
 
 
-    document
-      .querySelector(".newsletter-form")
-      .addEventListener("submit", function(e) {
+/* =========================================================
+   REMOVE
+========================================================= */
 
-        e.preventDefault();
+function removeFromCart(index){
 
-        const button = this.querySelector("button");
+  const removed = cart[index].name;
 
-        button.textContent = "Subscribed ✓";
+  cart.splice(index,1);
 
-        this.querySelector("input").value = "";
+  updateCart();
 
-      });
+  showToast(removed + " removed");
 
-  </script>
+}
+
+
+/* =========================================================
+   WISHLIST
+========================================================= */
+
+function toggleWishlist(button,name){
+
+  button.classList.toggle("active");
+
+  if(button.classList.contains("active")){
+
+    button.textContent = "♥";
+
+    showToast(name + " added to wishlist");
+
+  }else{
+
+    button.textContent = "♡";
+
+    showToast(name + " removed from wishlist");
+
+  }
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+searchBtn.addEventListener("click",function(){
+
+  searchPanel.classList.add("open");
+
+  setTimeout(() => {
+    searchInput.focus();
+  },300);
+
+});
+
+
+closeSearch.addEventListener("click",function(){
+
+  searchPanel.classList.remove("open");
+
+});
+
+
+searchInput.addEventListener("input",function(){
+
+  const value = searchInput.value.toLowerCase().trim();
+
+  if(!value){
+
+    searchResult.textContent =
+      "Explore our fragrance collection.";
+
+    return;
+
+  }
+
+
+  const products = [
+    "ISHQ",
+    "Wanted + Flora",
+    "Ayat Kids Cologne",
+    "Aura",
+    "295 Men",
+    "Craze"
+  ];
+
+
+  const matches = products.filter(product =>
+    product.toLowerCase().includes(value)
+  );
+
+
+  if(matches.length){
+
+    searchResult.textContent =
+      "Found: " + matches.join(" · ");
+
+  }else{
+
+    searchResult.textContent =
+      "No fragrance found for \"" + value + "\".";
+
+  }
+
+});
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+document
+.getElementById("newsletterForm")
+.addEventListener("submit",function(event){
+
+  event.preventDefault();
+
+  const email = document.getElementById("emailInput");
+
+  if(email.value.trim()){
+
+    showToast("Thank you for joining ÉLANE");
+
+    email.value = "";
+
+  }
+
+});
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function checkout(){
+
+  if(cart.length === 0){
+
+    showToast("Your bag is empty");
+
+    return;
+
+  }
+
+  showToast("Checkout coming soon");
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+function showToast(message){
+
+  toast.textContent = message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+
+    toast.classList.remove("show");
+
+  },2500);
+
+}
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener("keydown",function(event){
+
+  if(event.key === "Escape"){
+
+    closeBagDrawer();
+
+    searchPanel.classList.remove("open");
+
+  }
+
+});
+
+
+/* =========================================================
+   INITIAL CART
+========================================================= */
+
+updateCart();
+
+</script>
 
 </body>
 </html>
