@@ -1,1 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>ÉLANE — Luxury Fragrances</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Announcement -->
+  <div class="announcement">
+    <span>Complimentary delivery on orders above PKR 5,000</span>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">ÉLANE</a>
+
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#collection">Collection</a>
+      <a href="#about">Our Story</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search">⌕</button>
+      <button class="icon-btn" aria-label="Wishlist">♡</button>
+      <button class="icon-btn cart-btn" aria-label="Cart">
+        Bag <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">THE ART OF FRAGRANCE</p>
+
+        <h1>
+          A Signature<br>
+          <em>Worth Remembering.</em>
+        </h1>
+
+        <p class="hero-text">
+          Discover refined fragrances crafted for those who
+          leave an impression without saying a word.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#collection" class="btn btn-dark">Explore Collection</a>
+          <a href="#about" class="btn btn-outline">Discover Our Story</a>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <div class="hero-image-overlay"></div>
+        <img
+          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=1200&q=90"
+          alt="Luxury perfume bottle">
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+      <p class="eyebrow">CRAFTED WITH INTENTION</p>
+      <h2>Fragrance is not simply worn.<br><em>It becomes part of you.</em></h2>
+      <p>
+        Every ÉLANE fragrance is created to tell a story —
+        sophisticated, memorable and distinctly yours.
+      </p>
+    </section>
+
+    <!-- Collection -->
+    <section class="collection" id="collection">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2>Signature Fragrances</h2>
+        </div>
+
+        <a href="#" class="view-all">View All →</a>
+      </div>
+
+      <div class="products">
+
+        <!-- Product 1 -->
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">BESTSELLER</span>
+
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=900&q=90"
+              alt="Luxury perfume">
+          </div>
+
+          <div class="product-info">
+            <p class="product-type">EAU DE PARFUM</p>
+            <h3>Noir Élan</h3>
+            <p class="notes">Oud · Amber · Vanilla</p>
+
+            <div class="product-bottom">
+              <strong>PKR 5,490</strong>
+              <button class="add-btn" data-product="Noir Élan">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">NEW</span>
+
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1563170351-be82bc888aa4?auto=format&fit=crop&w=900&q=90"
+              alt="Luxury fragrance bottle">
+          </div>
+
+          <div class="product-info">
+            <p class="product-type">EAU DE PARFUM</p>
+            <h3>Velour</h3>
+            <p class="notes">Rose · Musk · Sandalwood</p>
+
+            <div class="product-bottom">
+              <strong>PKR 5,990</strong>
+              <button class="add-btn" data-product="Velour">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card">
+          <div class="product-image">
+            <span class="badge">SIGNATURE</span>
+
+            <button class="wishlist">♡</button>
+
+            <img
+              src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=900&q=90"
+              alt="Premium perfume">
+          </div>
+
+          <div class="product-info">
+            <p class="product-type">EAU DE PARFUM</p>
+            <h3>Maison Noir</h3>
+            <p class="notes">Leather · Cedar · Spice</p>
+
+            <div class="product-bottom">
+              <strong>PKR 6,490</strong>
+              <button class="add-btn" data-product="Maison Noir">Add to Bag</button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story" id="about">
+
+      <div class="story-image">
+        <img
+          src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?auto=format&fit=crop&w=1200&q=90"
+          alt="Perfume collection">
+      </div>
+
+      <div class="story-content">
+        <p class="eyebrow">OUR PHILOSOPHY</p>
+
+        <h2>Created for<br><em>lasting impressions.</em></h2>
+
+        <p>
+          We believe true luxury lies in the details.
+          From the first note to the final trace, every
+          ÉLANE fragrance is designed with elegance,
+          character and individuality in mind.
+        </p>
+
+        <a href="#" class="text-link">Discover ÉLANE →</a>
+      </div>
+
+    </section>
+
+    <!-- Quote -->
+    <section class="quote">
+      <p class="eyebrow">THE ÉLANE EXPERIENCE</p>
+      <h2>
+        “Luxury is the memory<br>
+        <em>you leave behind.</em>”
+      </h2>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter" id="contact">
+      <div>
+        <p class="eyebrow">STAY IN THE KNOW</p>
+        <h2>Enter the world of ÉLANE.</h2>
+        <p>
+          Be the first to discover new fragrances,
+          exclusive launches and private offers.
+        </p>
+      </div>
+
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+
+    <div class="footer-brand">
+      <h2>ÉLANE</h2>
+      <p>Modern fragrances. Timeless impressions.</p>
+    </div>
+
+    <div class="footer-links">
+      <div>
+        <h4>SHOP</h4>
+        <a href="#collection">All Fragrances</a>
+        <a href="#collection">Bestsellers</a>
+        <a href="#collection">New Arrivals</a>
+      </div>
+
+      <div>
+        <h4>HELP</h4>
+        <a href="#">Shipping</a>
+        <a href="#">Returns</a>
+        <a href="#">Contact</a>
+      </div>
+
+      <div>
+        <h4>FOLLOW</h4>
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ÉLANE. All rights reserved.</span>
+      <span>Luxury, beautifully bottled.</span>
+    </div>
+
+  </footer>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
